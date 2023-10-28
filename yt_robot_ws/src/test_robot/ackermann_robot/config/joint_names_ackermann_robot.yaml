@@ -1,1 +1,0 @@
-controller_joint_names: ['', 'base_link2left_bridge', 'left_bridge2wheel', 'base_link2right_bridge', 'right_bridge2wheel', 'base_link2left_back_wheel', 'base_link2right_back_wheel', ]
