@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>    
+    <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+    <arg name="gui" default="true" doc="Starts gazebo gui" />
+    <!--    default empty_test demo_test-->
+    <!-- <arg name="world_name" value="$(find yt_robot_description)/worlds/empty_test.sdf"/> -->
+    <arg name="world_name" value="$(find yt_robot_description)/worlds/company_model/world/new.sdf"/>
+
+    <!-- 将xacro文件内容加载到参数服务器 -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find yt_robot_description)/urdf/yt_robot.xacro"/>
+
+    <!-- 加载仿真环境 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="gui" value="true"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="use_clock_frequency" default="true"/>
+    </include>
+
+    <!-- 在gazebo中显示机器人模型 -->
+    <node name="gazebo_spawn_robot"
+          pkg="gazebo_ros"
+          type="spawn_model"
+          args="-urdf -param robot_description -model yt_robot -x 5.0 -y 5.0 -z 0.3"
+          respawn="false"
+          output="screen"/>
+    <!--node pkg="tf" type="static_transform_publisher" name="odom" args="0 0 0 0 0 0 1 world dummy_link 100" /-->
+
+    <!-- 加载 state publisher -->
+    <include file="$(find yt_robot_gazebo)/launch/gazebo_state.launch" />
+
+    <!-- 加载 controller >-->
+    <include file="$(find yt_robot_gazebo)/launch/gazebo_controller.launch" />
+
+    <!-- <node pkg="topic_tools" type="throttle" name="imu_throttle" args="messages /imu 100.0 /imu" output="screen" respawn="true"/>     -->
+
+
+    <!-- 启动rviz -->
+    <include file="$(find yt_robot_gazebo)/launch/gazebo_rviz.launch" />
+
+
+</launch>

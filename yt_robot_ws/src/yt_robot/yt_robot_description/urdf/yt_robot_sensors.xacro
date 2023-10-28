@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <!-- 添加相机 -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/camera.xacro" />
+    <!-- 添加雷达 -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/lasers.xacro" />
+    <!-- 添加IMU -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/imu.xacro" />
+</robot>

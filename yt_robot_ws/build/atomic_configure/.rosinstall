@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/odrobot/Downloads/gazebo/yt_robot_ws/devel/setup.sh

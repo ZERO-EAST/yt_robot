@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+    <xacro:property name="M_PI" value="3.1415926"/>
+
+    <!-- v16雷达sensor -->
+    <gazebo reference="laser_link">
+        <sensor name="v16_sensor_ray" type="gpu_ray">
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                 <!-- <samples>1000</samples>   initial  -->
+                    <horizontal>
+                        <samples>1800</samples>         
+                        <resolution>1.0</resolution>
+                        <min_angle>-${M_PI}</min_angle>
+                        <max_angle>${M_PI}</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>16</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-${15*M_PI/180.0}</min_angle>
+                        <max_angle>${15*M_PI/180.0}</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.8</min>
+                    <max>150.0</max>
+                    <resolution>0.1</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="v16_gazebo_laser" filename="libgazebo_ros_velodyne_gpu_laser.so">
+                <gaussianNoise>0.005</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <!-- <updateRate>100</updateRate> -->
+                <topicName>/lslidar_point_cloud</topicName>
+                <frameName>laser_link</frameName>
+                <min_range>0.8</min_range>
+                <max_range>150</max_range>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- v4雷达1sensor -->
+    <gazebo reference="laser_front">
+        <sensor name="v4_1_sensor_ray" type="gpu_ray">
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1800</samples>
+                        <resolution>1.0</resolution>
+                        <min_angle>${-45*M_PI/180.0}</min_angle>
+                        <max_angle>${220*M_PI/180.0}</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-${10*M_PI/180.0}</min_angle>
+                        <max_angle>${0.3*M_PI/180.0}</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.1</min>
+                    <max>40</max>
+                    <resolution>0.1</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="v4_1_gazebo_laser" filename="libgazebo_ros_velodyne_gpu_laser.so">
+                <gaussianNoise>0.005</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <!-- <updateRate>10</updateRate> -->
+                <topicName>/wj_point_cloud_front</topicName>
+                <frameName>laser_front</frameName>
+                <min_range>0.1</min_range>
+                <max_range>40</max_range>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- v4雷达2sensor -->
+    <gazebo reference="laser_center">
+        <sensor name="v4_2_sensor_ray" type="gpu_ray">
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1800</samples>
+                        <resolution>1.0</resolution>
+                        <min_angle>${0*M_PI/180.0}</min_angle>
+                        <max_angle>${180*M_PI/180.0}</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-${10*M_PI/180.0}</min_angle>
+                        <max_angle>${0.3*M_PI/180.0}</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.7</min>
+                    <max>40</max>
+                    <resolution>0.1</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="v4_2_gazebo_laser" filename="libgazebo_ros_velodyne_gpu_laser.so">
+                <gaussianNoise>0.005</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <!-- <updateRate>10</updateRate> -->
+                <topicName>/wj_point_cloud_center</topicName>
+                <frameName>laser_center</frameName>
+                <min_range>0.7</min_range>
+                <max_range>40</max_range>
+            </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- v4雷达3sensor -->
+    <gazebo reference="laser_back">
+        <sensor name="v4_3_sensor_ray" type="gpu_ray">
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <ray>
+                <scan>
+                    <horizontal>
+                        <samples>1800</samples>
+                        <resolution>1.0</resolution>
+                        <min_angle>${-45*M_PI/180.0}</min_angle>
+                        <max_angle>${220*M_PI/180.0}</max_angle>
+                    </horizontal>
+                    <vertical>
+                        <samples>4</samples>
+                        <resolution>1</resolution>
+                        <min_angle>-${10*M_PI/180.0}</min_angle>
+                        <max_angle>${0.3*M_PI/180.0}</max_angle>
+                    </vertical>
+                </scan>
+                <range>
+                    <min>0.1</min>
+                    <max>40</max>
+                    <resolution>0.1</resolution>
+                </range>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.01</stddev>
+                </noise>
+            </ray>
+            <plugin name="v4_3_gazebo_laser" filename="libgazebo_ros_velodyne_gpu_laser.so">
+                <gaussianNoise>0.005</gaussianNoise>
+                <alwaysOn>true</alwaysOn>
+                <!-- <updateRate>10</updateRate> -->
+                <topicName>/wj_point_cloud_back</topicName>
+                <frameName>laser_back</frameName>
+                <min_range>0.1</min_range>
+                <max_range>40</max_range>
+            </plugin>
+        </sensor>
+    </gazebo>
+</robot>

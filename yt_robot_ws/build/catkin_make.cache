@@ -1,0 +1,2 @@
+test_robot/ackermann_robot:test_robot/test_robot_description:test_robot/test_robot_gazebo:yt_robot/velodyne_simulator/velodyne_description:yt_robot/velodyne_simulator/velodyne_gazebo_plugins:yt_robot/velodyne_simulator/velodyne_simulator:yt_robot/yt_robot_description:yt_robot/yt_robot_gazebo
+-DCATKIN_DEVEL_PREFIX=/home/odrobot/Downloads/gazebo/yt_robot_ws/devel -DCMAKE_INSTALL_PREFIX=/home/odrobot/Downloads/gazebo/yt_robot_ws/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/odrobot/Downloads/gazebo/yt_robot_ws/install
+
+Name: ackermann_robot
+Description: Description of ackermann_robot
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

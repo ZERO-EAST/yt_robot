@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- load joint controller parameter file -->
+    <rosparam file="$(find test_robot_gazebo)/config/joint_controllers.yaml" command="load"/>
+
+    <!-- load controller -->
+    <node name="test_robot_controller_spawner" 
+          pkg="controller_manager" 
+          type="spawner" 
+          respawn="false"
+          output="screen" 
+          ns="/test_robot" 
+          args="left_bridge_position_controller
+          right_bridge_position_controller
+          left_back_velocity_controller
+          right_back_velocity_controller"/>
+</launch>

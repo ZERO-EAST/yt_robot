@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<robot name="yt_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <!-- 添加机器人urdf -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/yt_robot_urdf.xacro"/>
+    <!-- 添加gazebo属性 -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/yt_robot_materials.xacro"/>
+    <!-- 添加gazebo传感器 -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/yt_robot_sensors.xacro"/>
+    <!-- 添加gazebo控制器 -->
+    <xacro:include filename="$(find yt_robot_description)/urdf/yt_robot_trans.xacro"/>
+</robot>

@@ -1,0 +1,104 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="body_color" value="Gazebo/White"/>
+    <xacro:property name="bridge_color" value="Gazebo/Red"/>
+    <xacro:property name="wheel_color" value="Gazebo/Grey"/>
+    <xacro:property name="camera_color" value="Gazebo/Blue"/>
+    <xacro:property name="imu_color" value="Gazebo/Green"/>
+    <xacro:property name="laser_color" value="Gazebo/Red"/>
+    <xacro:property name="wheel_mu1" value="0.5"/>
+    <xacro:property name="wheel_mu2" value="0.5"/>
+
+    <gazebo reference="base_link">
+        <material>${body_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+    </gazebo>
+
+    <gazebo reference="left_bridge">
+        <material>${bridge_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="left_front_wheel">
+        <material>${wheel_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+        <kp>100000</kp>
+        <kd>1</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>100</maxVel>
+        <self_collide>0</self_collide>
+    </gazebo>
+    <gazebo reference="right_bridge">
+        <material>${bridge_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="right_front_wheel">
+        <material>${wheel_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+        <kp>100000</kp>
+        <kd>1</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>100</maxVel>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="left_back_wheel">
+        <material>${wheel_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+        <kp>100000</kp>
+        <kd>1</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>100</maxVel>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="right_back_wheel">
+        <material>${wheel_color}</material>
+        <mu1>${wheel_mu1}</mu1>
+        <mu2>${wheel_mu2}</mu2>
+        <kp>100000</kp>
+        <kd>1</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>100</maxVel>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="laser_link">
+        <material>${laser_color}</material>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="laser_front">
+        <material>${laser_color}</material>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="laser_center">
+        <material>${laser_color}</material>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="laser_back">
+        <material>${laser_color}</material>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="IMU">
+        <material>${imu_color}</material>
+        <self_collide>0</self_collide>
+    </gazebo>
+
+    <gazebo reference="camera">
+        <material>${camera_color}</material>
+        <self_collide>0</self_collide>
+    </gazebo>
+</robot>

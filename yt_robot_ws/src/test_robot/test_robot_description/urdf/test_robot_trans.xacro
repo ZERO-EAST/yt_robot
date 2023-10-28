@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<robot>
+    <!-- 设置车架到左桥的joint -->
+    <transmission name="base_link2left_bridge_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_link2left_bridge">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_link2left_bridge_actuator">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- 设置车架到右桥的joint -->
+    <transmission name="base_link2right_bridge_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_link2right_bridge">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_link2right_bridge_actuator">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- 设置车架到左后轮的joint -->
+    <transmission name="base_link2left_back_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_link2left_back_wheel">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_link2left_back_wheel_actuator">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- 设置车架到右后轮的joint -->
+        <transmission name="base_link2right_back_wheel_transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="base_link2right_back_wheel">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="base_link2right_back_wheel_actuator">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <!-- 加载gazebo关节控制插件 -->
+    <gazebo>
+        <plugin name="control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/test_robot</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>

@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<launch>    
+    <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+    <arg name="gui" default="true" doc="Starts gazebo gui" />
+    <arg name="world_name" value="$(find test_robot_description)/worlds/empty_test.sdf"/>
+
+    <!-- 将xacro文件内容加载到参数服务器 -->
+    <param name="robot_description" command="$(find xacro)/xacro $(find test_robot_description)/urdf/test_robot.xacro"/>
+
+    <!-- 加载仿真环境 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="gui" value="true"/>
+        <arg name="use_sim_time" value="true"/>
+    </include>
+
+    <!-- 在gazebo中显示机器人模型 -->
+    <node name="gazebo_spawn_robot"
+          pkg="gazebo_ros"
+          type="spawn_model"
+          args="-urdf -param robot_description -model test_robot -z 0.01"
+          respawn="false"
+          output="screen"/>
+    <!--node pkg="tf" type="static_transform_publisher" name="odom" args="0 0 0 0 0 0 1 world dummy_link 100" /-->
+
+    <!-- 加载 state publisher -->
+    <include file="$(find test_robot_gazebo)/launch/gazebo_state.launch" />
+
+    <!-- 加载 controller -->
+    <include file="$(find test_robot_gazebo)/launch/gazebo_controller.launch" />
+
+<!--    &lt;!&ndash; 启动rviz &ndash;&gt;-->
+<!--    <include file="$(find test_robot_gazebo)/launch/gazebo_rviz.launch" />-->
+
+
+</launch>

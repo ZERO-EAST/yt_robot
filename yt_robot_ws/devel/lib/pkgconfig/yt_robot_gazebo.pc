@@ -1,0 +1,8 @@
+prefix=/home/odrobot/Downloads/gazebo/yt_robot_ws/devel
+
+Name: yt_robot_gazebo
+Description: Description of yt_robot_gazebo
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
